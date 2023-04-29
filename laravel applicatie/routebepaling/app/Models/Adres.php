@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Adres extends Model
+{
+    use HasFactory;
+    protected $table = 'adressen';
+    protected $fillable = [
+        'stad',
+        'postcode',
+        'straatnaam',
+        'huisnummer',
+        'route_id'
+    ];
+}
