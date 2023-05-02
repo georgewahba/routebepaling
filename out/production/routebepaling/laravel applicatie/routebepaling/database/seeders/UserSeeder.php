@@ -19,5 +19,40 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        DB::table('users')->insert([
+            'username' => 'steven',
+            'password' => '12345',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'sam',
+            'password' => '12345',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'timo',
+            'password' => '12345',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'sahaj',
+            'password' => '12345',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'sedie',
+            'password' => '12345',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }

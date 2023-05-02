@@ -33,5 +33,17 @@ class RouteSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        DB::table('route')->insert([
+            'user_id' => '5',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        DB::table('route')->insert([
+            'user_id' => '6',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }

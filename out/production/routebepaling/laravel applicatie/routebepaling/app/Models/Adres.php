@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Adres extends Model
 {
     use HasFactory;
-    protected $table = 'adres';
+    protected $table = 'adressen';
     protected $fillable = [
         'stad',
         'postcode',

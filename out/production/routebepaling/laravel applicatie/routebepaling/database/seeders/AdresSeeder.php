@@ -28,7 +28,7 @@ class AdresSeeder extends Seeder
         "postcode" => "3011EA",
         "straatnaam" => "Coolsingel",
         "huisnummer" => "42",
-        "route_id" => "1",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -38,7 +38,7 @@ class AdresSeeder extends Seeder
         "postcode" => "3511ER",
         "straatnaam" => "Oudegracht",
         "huisnummer" => "123",
-        "route_id" => "1",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -48,7 +48,7 @@ class AdresSeeder extends Seeder
         "postcode" => "2511CC",
         "straatnaam" => "Binnenhof",
         "huisnummer" => "1",
-        "route_id" => "1",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
