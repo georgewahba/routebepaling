@@ -92,16 +92,16 @@ public class Routebepaling_scherm extends JFrame {
                         // user is toevoegen op de plek van de plek van de ?
                         adresses.setString(1, String.valueOf(resultSet.getInt("id")));
                         ResultSet resultSet2 = adresses.executeQuery();
+                        int pos = 0;
                         while (resultSet2.next()) {
                             // voor elk adres word er een labeltoegevoegd
                             JLabel route1 = new JLabel("Route: adres" + resultSet2.getInt("id") + " " + resultSet2.getString("straatnaam") + " " + resultSet2.getString("huisnummer") + " " + resultSet2.getString("stad") + " " + resultSet2.getString("postcode"));
-                            //*BUG: hoogte van de adressen wordt gedaan door 150 + 20Xid te doen we willen dat het altijd gewoon vanaf 1 begint en niet meer het id gebruiken, kan met een i en dan i++ te doen* 
-                            route1.setBounds(10, 150 + resultSet2.getInt("id") * 20, 400, 25);
+                            route1.setBounds(10, 150 + pos * 20, 400, 25);
                             panel.add(route1);
 
                             // de "navigeer naar adres" knop word toegevoegd, als je hierop drukt gaat je browser naar google maps en navigeert naar het adres
                             JButton navigeer_button = new JButton("navigeer adres");
-                            navigeer_button.setBounds(350, 150 + resultSet2.getInt("id") * 20, 120, 25);
+                            navigeer_button.setBounds(350, 150 + pos * 20, 120, 25);
                             panel.add(navigeer_button);
 
                             // attributen van het adres maken zonder spaties(andrs werkt de maps url niet) om ze in de maps url te gebruiken
@@ -122,7 +122,7 @@ public class Routebepaling_scherm extends JFrame {
 
                             // de "bezorgd" knop word toegevoegd, als je hierop drukt word de route verwijderd dit duid an dat het pakketje is bezorgd
                             JButton bezorgd_button = new JButton("bezorg adres");
-                            bezorgd_button.setBounds(500, 150 + resultSet2.getInt("id") * 20, 120, 25);
+                            bezorgd_button.setBounds(500, 150 + pos * 20, 120, 25);
                             panel.add(bezorgd_button);
                             bezorgd_button.addActionListener(e12 -> {
                                 //route wordt visureel verwijderd
@@ -133,6 +133,7 @@ public class Routebepaling_scherm extends JFrame {
                                 panel.revalidate();
                                 panel.repaint();
                             });
+                            pos++;
                         }
 
                     } catch (SQLException ex) {
