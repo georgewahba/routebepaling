@@ -1,5 +1,5 @@
 //
-// Created by: George Wahba
+// Created by: Groep 7 2.0
 //java code voor de routebepaling applicatie
 //
 
@@ -25,7 +25,7 @@ public class Routebepaling_scherm extends JFrame {
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
         //scherm is lang en smal zodat het op een mobiel scherm lijkt
-        frame.setSize(700, 1000);
+        frame.setSize(800, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
 
@@ -121,7 +121,7 @@ public class Routebepaling_scherm extends JFrame {
 
                                 //browser openen naar google maps met het adres
                                 try {
-                                    Desktop.getDesktop().browse(new URI("https://www.google.com/maps/place/" + straatnaam + "+" + huisnummer + "+" + stad + "+" + postcode) );
+                                    Desktop.getDesktop().browse(new URI("https://www.google.com/maps/place/" + straatnaam + "+" + huisnummer + "+" + stad + "+" + postcode));
                                 } catch (IOException | URISyntaxException ex) {
                                     throw new RuntimeException(ex);
                                 }
@@ -129,8 +129,12 @@ public class Routebepaling_scherm extends JFrame {
 
                             // de "bezorgd" knop word toegevoegd, als je hierop drukt word de route verwijderd dit duid an dat het pakketje is bezorgd
                             JButton bezorgd_button = new JButton("bezorgd");
-                            bezorgd_button.setBounds(500, 150 + pos * 20, 120, 25);
+                            bezorgd_button.setBounds(460, 150 + pos * 20, 120, 25);
                             panel.add(bezorgd_button);
+
+                            JButton buren_button = new JButton("Bezorg bij buren");
+                            buren_button.setBounds(570, 150 + pos * 20, 150, 25);
+                            panel.add(buren_button);
 
                             int id = resultSet2.getInt("id");
                             bezorgd_button.addActionListener(e12 -> {
@@ -148,9 +152,67 @@ public class Routebepaling_scherm extends JFrame {
                                 panel.remove(route1);
                                 panel.remove(navigeer_button);
                                 panel.remove(bezorgd_button);
+                                panel.remove(buren_button);
                                 panel.revalidate();
                                 panel.repaint();
                             });
+
+
+                            buren_button.addActionListener(e14 -> {
+                                //begin dialoogvenster with 1 label for huisnummer and 1 textfield for huisnumme
+                            JFrame JDialog = new JFrame();
+                            JDialog.setSize(300, 300);
+                            JDialog.setLayout(null);
+                            JDialog.setVisible(true);
+
+                            JLabel huisnummer_label = new JLabel("Huisnummer");
+                            huisnummer_label.setBounds(10, 10, 80, 25);
+                            JDialog.add(huisnummer_label);
+
+                            JTextField huisnummer_textfield = new JTextField();
+                            huisnummer_textfield.setBounds(100, 10, 80, 25);
+                            JDialog.add(huisnummer_textfield);
+
+                            JButton confirm_button = new JButton("Confirm");
+                            confirm_button.setBounds(10, 80, 80, 25);
+                            JDialog.add(confirm_button);
+
+                            confirm_button.addActionListener(e15 -> {
+                                //huisnummer van de buren wordt opgehaald
+                                String huisnummer_buren = huisnummer_textfield.getText();
+                                //huisnummer van de buren wordt in de database gezet
+                                try {
+                                    PreparedStatement buren = connection.prepareStatement("UPDATE adressen SET bij_buren = ?, is_completed = 1 WHERE id = ?");
+                                    buren.setString(1, huisnummer_buren);
+                                    buren.setString(2, String.valueOf(id));
+                                    buren.executeUpdate();
+
+                                    panel.remove(route1);
+                                    panel.remove(navigeer_button);
+                                    panel.remove(bezorgd_button);
+                                    panel.remove(buren_button);
+                                    panel.revalidate();
+                                    panel.repaint();
+                                } catch (SQLException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                                //dialoogvenster wordt gesloten
+                                JDialog.dispose();
+                            });
+
+                            JButton cancel_button = new JButton("Cancel");
+                            cancel_button.setBounds(100, 80, 80, 25);
+                            JDialog.add(cancel_button);
+
+                            cancel_button.addActionListener(e16 -> {
+                                //dialoogvenster wordt gesloten
+                                JDialog.dispose();
+                            });
+
+                            JDialog.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                            });
+
                             pos++;
                         }
 
@@ -208,4 +270,6 @@ public class Routebepaling_scherm extends JFrame {
 
         frame.setVisible(true);
     }
+
+
 }
