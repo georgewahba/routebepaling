@@ -55,6 +55,11 @@ public class Routebepaling_scherm extends JFrame {
         JButton button = new JButton("login");
         button.setBounds(10, 80, 80, 25);
         panel.add(button);
+
+        // Login mislukt, error label wordt toegevoegd
+        JLabel errorLabel = new JLabel("Incorrect username or password!");
+        errorLabel.setBounds(10, 120, 250, 25);
+        errorLabel.setForeground(Color.RED);
         //einde login scherm
 
         button.addActionListener(e -> {
@@ -62,6 +67,8 @@ public class Routebepaling_scherm extends JFrame {
             //ophalen van de ingevoerde gegevens
             String user = textfield.getText();
             String pass = passwordfield.getText();
+            //fout login notificatie wordt verwijderd
+            panel.remove(errorLabel);
 
             try {
                 //connectie met de database
@@ -186,11 +193,7 @@ public class Routebepaling_scherm extends JFrame {
                     panel.revalidate();
                     panel.repaint();
                 } else {
-                    // Login mislukt, error label wordt toegevoegd
-                    JLabel errorLabel = new JLabel("Incorrect username or password!");
-                    //**BUG: error label overlapt gelukt label wanneer er eerst fout is ingelogd en daarna goed is ingelogd**
-                    errorLabel.setBounds(10, 120, 250, 25);
-                    errorLabel.setForeground(Color.RED);
+                    //foute login notificatie wordt kayten zien bij foute login
                     panel.add(errorLabel);
 
                     // Repaint the panel

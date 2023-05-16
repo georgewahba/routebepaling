@@ -18,7 +18,7 @@ class AdresSeeder extends Seeder
         "postcode" => "1012AB",
         "straatnaam" => "Damstraat",
         "huisnummer" => "1",
-        "route_id" => "1",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -58,7 +58,7 @@ class AdresSeeder extends Seeder
         "postcode" => "9712AA",
         "straatnaam" => "Grote Markt",
         "huisnummer" => "1",
-        "route_id" => "1",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -68,7 +68,7 @@ class AdresSeeder extends Seeder
         "postcode" => "5611AE",
         "straatnaam" => "Markt",
         "huisnummer" => "21",
-        "route_id" => "1",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -78,7 +78,7 @@ class AdresSeeder extends Seeder
         "postcode" => "1012AB",
         "straatnaam" => "Damstraat",
         "huisnummer" => "1",
-        "route_id" => "1",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -88,7 +88,7 @@ class AdresSeeder extends Seeder
         "postcode" => "6211CH",
         "straatnaam" => "Vrijthof",
         "huisnummer" => "1",
-        "route_id" => "1",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -98,7 +98,7 @@ class AdresSeeder extends Seeder
         "postcode" => "2011PL",
         "straatnaam" => "Grote Houtstraat",
         "huisnummer" => "1",
-        "route_id" => "1",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -108,7 +108,7 @@ class AdresSeeder extends Seeder
         "postcode" => "1012AB",
         "straatnaam" => "Damstraat",
         "huisnummer" => "1",
-        "route_id" => "1",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -118,7 +118,7 @@ class AdresSeeder extends Seeder
         "postcode" => "8911DM",
         "straatnaam" => "Nieuwestad",
         "huisnummer" => "1",
-        "route_id" => "1",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -128,7 +128,7 @@ class AdresSeeder extends Seeder
         "postcode" => "6811BJ",
         "straatnaam" => "Korenmarkt",
         "huisnummer" => "1",
-        "route_id" => "1",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -138,7 +138,7 @@ class AdresSeeder extends Seeder
         "postcode" => "1012AB",
         "straatnaam" => "Damstraat",
         "huisnummer" => "1",
-        "route_id" => "2",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -148,7 +148,7 @@ class AdresSeeder extends Seeder
         "postcode" => "3011EA",
         "straatnaam" => "Coolsingel",
         "huisnummer" => "42",
-        "route_id" => "2",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
@@ -158,7 +158,7 @@ class AdresSeeder extends Seeder
         "postcode" => "3511ER",
         "straatnaam" => "Oudegracht",
         "huisnummer" => "123",
-        "route_id" => "2",
+        "route_id" => null,
         'created_at' => now(),
         'updated_at' => now()
     ]);
