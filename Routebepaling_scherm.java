@@ -12,7 +12,7 @@ import java.awt.*;
 import java.net.URI;
 
 public class Routebepaling_scherm extends JFrame {
-    // database gegevens voor de connectie
+    //database gegevens voor de connectie
     //url van de database :3306 is de poort(verander dit als je een andere poort gebruikt)
     //roiutebepaling is de database naam(verander dit als je een andere database naam gebruikt)
     static String url = "jdbc:mysql://localhost:3306/routebepaling";
@@ -88,7 +88,7 @@ public class Routebepaling_scherm extends JFrame {
 
                     try {
                         //query voor het ophalen van de adressen gekoppeld aan de ingelogde gebruiker
-                        PreparedStatement adresses = connection.prepareStatement("SELECT * FROM adressen WHERE route_id = ?");
+                        PreparedStatement adresses = connection.prepareStatement("SELECT * FROM adressen WHERE route_id = ? AND is_completed = 0");
                         // user is toevoegen op de plek van de plek van de ?
                         adresses.setString(1, String.valueOf(resultSet.getInt("id")));
                         ResultSet resultSet2 = adresses.executeQuery();
@@ -121,12 +121,23 @@ public class Routebepaling_scherm extends JFrame {
                             });
 
                             // de "bezorgd" knop word toegevoegd, als je hierop drukt word de route verwijderd dit duid an dat het pakketje is bezorgd
-                            JButton bezorgd_button = new JButton("bezorg adres");
+                            JButton bezorgd_button = new JButton("bezorgd");
                             bezorgd_button.setBounds(500, 150 + pos * 20, 120, 25);
                             panel.add(bezorgd_button);
+
+                            int id = resultSet2.getInt("id");
                             bezorgd_button.addActionListener(e12 -> {
                                 //route wordt visureel verwijderd
-                                // *BUG: de route wordt niet uit de database verwijderd/verplaatst, dit moet nog gedaan worden*
+                                //route wordt in de tabel op compleet gezet
+                                try {
+                                    PreparedStatement completed = connection.prepareStatement("UPDATE adressen SET is_completed = 1 WHERE id = ?");
+                                    completed.setString(1, String.valueOf(id));
+                                    completed.executeUpdate();
+
+                                } catch (SQLException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+
                                 panel.remove(route1);
                                 panel.remove(navigeer_button);
                                 panel.remove(bezorgd_button);

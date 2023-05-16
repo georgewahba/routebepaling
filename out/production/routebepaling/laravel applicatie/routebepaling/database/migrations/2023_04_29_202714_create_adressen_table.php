@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('straatnaam');
             $table->string('huisnummer');
             $table->string('route_id')->nullable()->default(null);
+            $table->boolean('is_completed')->default(false);
+            $table->string('bij_buren')->nullable()->default(null);
             $table->timestamps();
         });
     }
