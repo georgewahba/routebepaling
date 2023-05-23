@@ -95,7 +95,7 @@ public class Routebepaling_scherm extends JFrame {
 
                     try {
                         //query voor het ophalen van de adressen gekoppeld aan de ingelogde gebruiker
-                        PreparedStatement adresses = connection.prepareStatement("SELECT * FROM adressen WHERE route_id = ? AND is_completed = 0");
+                        PreparedStatement adresses = connection.prepareStatement("SELECT * FROM adressen WHERE route_id = ? AND is_completed = 0 order by postcode asc");;
                         // user is toevoegen op de plek van de plek van de ?
                         adresses.setString(1, String.valueOf(resultSet.getInt("id")));
                         ResultSet resultSet2 = adresses.executeQuery();
