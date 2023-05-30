@@ -10,6 +10,7 @@ import java.net.URISyntaxException;
 import java.sql.*;
 import java.awt.*;
 import java.net.URI;
+import javax.swing.border.Border;
 
 public class Routebepaling_scherm extends JFrame {
     //database gegevens voor de connectie
@@ -107,8 +108,9 @@ public class Routebepaling_scherm extends JFrame {
                             panel.add(route1);
 
                             // de "navigeer naar adres" knop word toegevoegd, als je hierop drukt gaat je browser naar google maps en navigeert naar het adres
-                            JButton navigeer_button = new JButton("navigeer adres");
-                            navigeer_button.setBounds(350, 150 + pos * 20, 120, 25);
+                            JButton navigeer_button = new JButton("Navigeer adres");
+                            navigeer_button.setBounds(320, 150 + pos * 20, 150, 25);
+                            navigeer_button.setBorder(new RoundedBorder(10));
                             panel.add(navigeer_button);
 
                             // attributen van het adres maken zonder spaties(andrs werkt de maps url niet) om ze in de maps url te gebruiken
@@ -128,12 +130,20 @@ public class Routebepaling_scherm extends JFrame {
                             });
 
                             // de "bezorgd" knop word toegevoegd, als je hierop drukt word de route verwijderd dit duid an dat het pakketje is bezorgd
-                            JButton bezorgd_button = new JButton("bezorgd");
-                            bezorgd_button.setBounds(460, 150 + pos * 20, 120, 25);
+                            // groen
+                            JButton bezorgd_button = new JButton("Bezorgd");
+                            Color bezorgd_color = new Color(0,204,0);
+                            bezorgd_button.setBounds(475, 150 + pos * 20, 120, 25);
+                            bezorgd_button.setBackground(bezorgd_color);
+                            bezorgd_button.setBorder(new RoundedBorder(10));
                             panel.add(bezorgd_button);
 
+                            // oranje
                             JButton buren_button = new JButton("Bezorg bij buren");
-                            buren_button.setBounds(570, 150 + pos * 20, 150, 25);
+                            Color buren_color = new Color(255,102,0);
+                            buren_button.setBounds(600, 150 + pos * 20, 150, 25);
+                            buren_button.setBackground(buren_color);
+                            buren_button.setBorder(new RoundedBorder(10));
                             panel.add(buren_button);
 
                             int id = resultSet2.getInt("id");
@@ -214,8 +224,12 @@ public class Routebepaling_scherm extends JFrame {
                             });
 
                             //niet bezorgd knop, als hierop gelikt wordt wordt de route verwijderd voor de bezorger en en wordt het voor de volgende dag opnieuw ingepland
-                            JButton niet_bezorgd_button = new JButton("niet bezorgd");
-                            niet_bezorgd_button.setBounds(720, 150 + pos * 20, 120, 25);
+                            // rood
+                            JButton niet_bezorgd_button = new JButton("Niet bezorgd");
+                            Color niet_bezorgd_color = new Color(255,51,51);
+                            niet_bezorgd_button.setBounds(755, 150 + pos * 20, 120, 25);
+                            niet_bezorgd_button.setBackground(niet_bezorgd_color);
+                            niet_bezorgd_button.setBorder(new RoundedBorder(10));
                             panel.add(niet_bezorgd_button);
 
                             niet_bezorgd_button.addActionListener(e17 -> {
@@ -239,7 +253,7 @@ public class Routebepaling_scherm extends JFrame {
                                 panel.repaint();
                             });
 
-                            pos++;
+                            pos = pos + 2;
                         }
 
                     } catch (SQLException ex) {
