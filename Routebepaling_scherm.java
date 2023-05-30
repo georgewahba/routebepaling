@@ -25,7 +25,7 @@ public class Routebepaling_scherm extends JFrame {
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
         //scherm is lang en smal zodat het op een mobiel scherm lijkt
-        frame.setSize(800, 1000);
+        frame.setSize(900, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
 
@@ -211,6 +211,32 @@ public class Routebepaling_scherm extends JFrame {
 
                             JDialog.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+                            });
+
+                            //niet bezorgd knop, als hierop gelikt wordt wordt de route verwijderd voor de bezorger en en wordt het voor de volgende dag opnieuw ingepland
+                            JButton niet_bezorgd_button = new JButton("niet bezorgd");
+                            niet_bezorgd_button.setBounds(720, 150 + pos * 20, 120, 25);
+                            panel.add(niet_bezorgd_button);
+
+                            niet_bezorgd_button.addActionListener(e17 -> {
+                                //route wordt visureel verwijderd
+                                //route_id wordt weer op 0 gezet zodat de route opnieuw ingepland kan worden
+                                try {
+                                    PreparedStatement completed = connection.prepareStatement("UPDATE adressen SET route_id = null WHERE id = ?");
+                                    completed.setString(1, String.valueOf(id));
+                                    completed.executeUpdate();
+
+                                } catch (SQLException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+
+                                panel.remove(route1);
+                                panel.remove(navigeer_button);
+                                panel.remove(bezorgd_button);
+                                panel.remove(buren_button);
+                                panel.remove(niet_bezorgd_button);
+                                panel.revalidate();
+                                panel.repaint();
                             });
 
                             pos++;
