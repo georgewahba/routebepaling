@@ -138,6 +138,7 @@ public class Routebepaling_scherm extends JFrame {
                             bezorgd_button.setBounds(475, 150 + pos * 20, 120, 25);
                             bezorgd_button.setBackground(bezorgd_color);
                             bezorgd_button.setBorder(new RoundedBorder(10));
+                            bezorgd_button.setOpaque(true);
                             panel.add(bezorgd_button);
 
                             // oranje
@@ -146,6 +147,7 @@ public class Routebepaling_scherm extends JFrame {
                             buren_button.setBounds(600, 150 + pos * 20, 150, 25);
                             buren_button.setBackground(buren_color);
                             buren_button.setBorder(new RoundedBorder(10));
+                            buren_button.setOpaque(true);
                             panel.add(buren_button);
 
                             int id = resultSet2.getInt("id");
@@ -232,6 +234,7 @@ public class Routebepaling_scherm extends JFrame {
                             niet_bezorgd_button.setBounds(755, 150 + pos * 20, 120, 25);
                             niet_bezorgd_button.setBackground(niet_bezorgd_color);
                             niet_bezorgd_button.setBorder(new RoundedBorder(10));
+                            niet_bezorgd_button.setOpaque(true);
                             panel.add(niet_bezorgd_button);
 
                             niet_bezorgd_button.addActionListener(e17 -> {
