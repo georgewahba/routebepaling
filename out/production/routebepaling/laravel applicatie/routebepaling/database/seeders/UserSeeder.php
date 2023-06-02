@@ -54,5 +54,12 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        DB::table('users')->insert([
+            'username' => 'admin',
+            'password' => 'admin',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }
