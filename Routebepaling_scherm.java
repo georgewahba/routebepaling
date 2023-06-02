@@ -3,6 +3,8 @@
 //java code voor de routebepaling applicatie
 //
 
+//NOTE: LEES EN VOLG EERST HET README.MD BESTAND
+
 //java paketten imporeren
 import javax.swing.*;
 import java.io.IOException;

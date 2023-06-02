@@ -31,4 +31,6 @@ php artisan serve
 
 nu moet de server aan staan en de database gevuld zijn met dummy data, dit is de manager applicatie waar de manager de adressen kan koppelen aan de bezorgers.
 
-ga nu naar de java applicatie (genaamd Routebepaling_scherm.java) druk rechts boven op het hamertje om de applicatie te builden. er komt een login scherm naar voren waar u als test het volgende account kunt gebruiken userame:admin wacht:admin
+ga nu naar de java applicatie(genaamd Routebepaling_scherm.java)
+op lijn 16 wordt de database connectie gecreeerd, zorg ervoor dat de insellingen juist zijn met jouw locale machine.
+druk rechts boven op het hamertje om de applicatie te builden. er komt een login scherm naar voren waar u als test het volgende account kunt gebruiken userame:admin wacht:admin
