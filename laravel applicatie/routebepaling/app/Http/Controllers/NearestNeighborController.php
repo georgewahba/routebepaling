@@ -37,30 +37,36 @@ class NearestNeighborController extends Controller
     }
 
     public function algorithm(){
-    // Use the function
+    //get all the addresses that are not completed from the database    
     $adressen = \App\Models\Adres::where('is_completed', 0)
     ->get();
     
     echo "<h1> adressen voor het algoritme</h1>";
-
+//print unsorted list
     foreach($adressen as $adres){
         echo ($adres->postcode . " " . $adres->straatnaam . " " . $adres->huisnummer . " " . $adres->stad) . "<br>";
 
     }
-
+// api key for google maps
     $apiKey = "AIzaSyCrAh6_Yx0STeJdcpdM_dlqvw6ELt5HuEQ";
 
+    //empty array for the coordinates
     $lijst = array();
+
+    //loop through the addresses and get the coordinates
     foreach($adressen as $adres){
         $address = $adres->postcode . " " . $adres->straatnaam . " " . $adres->huisnummer . " " . $adres->stad;
         $coordinates = $this->getCoordinates($address, $apiKey);
 
+        //if the coordinates are found, push them to the array
         if ($coordinates) {
             array_push($lijst, ["adress"=>$address, "lat"=>$coordinates[0], "lng"=>$coordinates[1]]);
         } else {
             echo "There was an error retrieving the coordinates for {$address}.\n";
         }
     }
+
+    //run the algorithm
     $this->nearestNeighbour($lijst);
 
     return view('neighbor', compact('lijst'));
@@ -69,10 +75,12 @@ class NearestNeighborController extends Controller
     }
 
     function nearestNeighbour($points) {
+        // Start the route at the first point in the list
         $startPoint = array_shift($points);
         $route = array($startPoint);
         $currentPoint = $startPoint;
     
+        // Loop until all points have been visited
         while (!empty($points)) {
             $nearestDistance = null;
             $nearestPointIndex = null;
@@ -91,6 +99,7 @@ class NearestNeighborController extends Controller
             array_push($route, $currentPoint);
         }
         
+        //print the sorted list
         echo "<h1> adressen na het algoritme</h1>";
         foreach($route as $adres){
             echo ($adres["adress"]) . "<br>";
@@ -106,7 +115,7 @@ class NearestNeighborController extends Controller
         $lat2 = $point2['lat'];
         $lng2 = $point2['lng'];
       
-        // Calculate Euclidean distance (not accurate for geographical coordinates, but for simplicity's sake)
+        // Calculate closest distance
         return sqrt(pow($lat1 - $lat2, 2) + pow($lng1 - $lng2, 2));
     }
 }
