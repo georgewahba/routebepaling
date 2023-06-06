@@ -51,6 +51,25 @@ tfoot td:last-of-type {
   color: #e60000;
 }
 
+.blue-button {
+            background-color: #007BFF; /* Blue */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition-duration: 0.4s;
+        }
+
+        .blue-button:hover {
+            background-color: #0069D9; /* Darker blue */
+            color: white;
+        }
 
     </style>
 </head>
@@ -93,5 +112,8 @@ tfoot td:last-of-type {
             </td>
         </tr>
         @endforeach 
+    </table>
+
+      <a href="/neighbor" class="blue-button">voorbeeld algoritme</a>
 </body>
 </html>

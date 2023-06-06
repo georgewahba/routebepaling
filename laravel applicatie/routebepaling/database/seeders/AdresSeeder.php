@@ -74,6 +74,26 @@ class AdresSeeder extends Seeder
     ]);
 
     DB::table("adressen")->insert([
+        "stad" => "Almere",
+        "postcode" => "1312RC",
+        "straatnaam" => "piccolostreaat",
+        "huisnummer" => "33",
+        "route_id" => null,
+        'created_at' => now(),
+        'updated_at' => now()
+    ]);
+
+    DB::table("adressen")->insert([
+        "stad" => "Lelystad",
+        "postcode" => "8241CN",
+        "straatnaam" => "Albatroslaan",
+        "huisnummer" => "208",
+        "route_id" => null,
+        'created_at' => now(),
+        'updated_at' => now()
+    ]);
+
+    DB::table("adressen")->insert([
         "stad" => "Amsterdam",
         "postcode" => "1012AB",
         "straatnaam" => "Damstraat",

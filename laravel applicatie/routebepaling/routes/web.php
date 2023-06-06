@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 Route::post('/planuser', [\App\Http\Controllers\PlanUserController::class, 'index']);
+Route::get("/neighbor", [\App\Http\Controllers\NearestNeighborController::class, 'algorithm']);
+Route::get("/run", [\App\Http\Controllers\NearestNeighborController::class, 'algorithm']);
