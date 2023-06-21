@@ -15,9 +15,9 @@ import java.net.URI;
 import javax.swing.border.Border;
 
 public class Routebepaling_scherm extends JFrame {
-    //database gegevens voor de connectie
+    //database gegevens voor de connectie.
     //url van de database :3306 is de poort(verander dit als je een andere poort gebruikt)
-    //roiutebepaling is de database naam(verander dit als je een andere database naam gebruikt)
+    //routebepaling is de database naam(verander dit als je een andere database naam gebruikt)
     static String url = "jdbc:mysql://localhost:3306/routebepaling";
     //root is de username van de database(verander dit als je een andere gebruikersnaam gebruikt)
     //password is het wachtwoord van de database(verander dit als je een ander wachtwoord gebruikt)
@@ -97,14 +97,14 @@ public class Routebepaling_scherm extends JFrame {
                     panel.add(route);
 
                     try {
-                        //query voor het ophalen van de adressen gekoppeld aan de ingelogde gebruiker
+                        //query voor het ophalen van de adressen gekoppeld aan de ingelogde bezorger
                         PreparedStatement adresses = connection.prepareStatement("SELECT * FROM adressen WHERE route_id = ? AND is_completed = 0 order by postcode asc");;
-                        // user is toevoegen op de plek van de plek van de ?
+                        // user wordt toegevoegd op de plek van de plek van de ?
                         adresses.setString(1, String.valueOf(resultSet.getInt("id")));
                         ResultSet resultSet2 = adresses.executeQuery();
                         int pos = 0;
                         while (resultSet2.next()) {
-                            // voor elk adres word er een labeltoegevoegd
+                            // voor elk adres wordt er een label toegevoegd
                             JLabel route1 = new JLabel("Route: adres" + resultSet2.getInt("id") + " " + resultSet2.getString("straatnaam") + " " + resultSet2.getString("huisnummer") + " " + resultSet2.getString("stad") + " " + resultSet2.getString("postcode"));
                             route1.setBounds(10, 150 + pos * 20, 400, 25);
                             panel.add(route1);
@@ -300,7 +300,7 @@ public class Routebepaling_scherm extends JFrame {
                     panel.revalidate();
                     panel.repaint();
                 } else {
-                    //foute login notificatie wordt kayten zien bij foute login
+                    //foute login notificatie wordt laten zien bij foute login
                     panel.add(errorLabel);
 
                     // Repaint the panel
